@@ -1,19 +1,119 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Home</title>
-    <style media="screen">
-      body{
-        background: #191919;
+<html lang="ar" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>AMDE</title>
+  <link rel="stylesheet" href="/resources/css/style.css">
+  <script src="https://kit.fontawesome.com/7b41f2f688.js" crossorigin="anonymous"></script>
+</head>
+
+<body onload="enableEditMode();">
+  <h1>مرحبا بك :)</h1>
+
+  <div class="">
+    <button onclick="execCmd('bold');"><i class="fa fa-bold"></i> </button>
+    <button onclick="execCmd('italic');"><i class="fa fa-italic"></i> </button>
+    <button onclick="execCmd('underline');"><i class="fa fa-underline"></i> </button>
+    <button onclick="execCmd('strikeThrough');"><i class="fa fa-strikethrough"></i> </button>
+    <button onclick="execCmd('justifyRight');"><i class="fa fa-align-right"></i> </button>
+    <button onclick="execCmd('justifyCenter');"><i class="fa fa-align-center"></i> </button>
+    <button onclick="execCmd('justifyLeft');"><i class="fa fa-align-left"></i> </button>
+    <button onclick="execCmd('jsutifyFull');"><i class="fa fa-align-justify"></i> </button>
+    <button onclick="execCmd('cut');"><i class="fa fa-cut"></i> </button>
+    <button onclick="execCmd('copy');"><i class="fa fa-copy"></i> </button>
+    <button onclick="execCmd('outdent');"><i class="fa fa-dedent"></i> </button>
+    <button onclick="execCmd('indent');"><i class="fa fa-indent"></i> </button>
+    <button onclick="execCmd('subscript');"><i class="fa fa-subscript"></i> </button>
+    <button onclick="execCmd('superscript');"><i class="fa fa-superscript"></i> </button>
+    <button onclick="execCmd('undo');"><i class="fa fa-undo"></i> </button>
+    <button onclick="execCmd('redo');"><i class="fa fa-repeat"></i> </button>
+    <button onclick="execCmd('insertUnorderedList');"><i class="fa fa-list-ul"></i> </button>
+    <button onclick="execCmd('insertorderedlist');"><i class="fa fa-list-ol"></i> </button>
+    <button onclick="execCmd('insertParagraph');"><i class="fa fa-paragraph"></i> </button>
+
+    <select onchange="execCommandWithArg('formatBlock', this.value);">
+      <option value="H1">H1</option>
+      <option value="H2">H2</option>
+      <option value="H3">H3</option>
+      <option value="H4">H4</option>
+      <option value="H5">H5</option>
+      <option value="H6">H6</option>
+    </select>
+    <button onclick="execCmd('insertHorizontalRule');">HR</button>
+    <button onclick="execCommandWithArg('createLink', prompt('enter a url', 'http://'));" type="button" name="button"><i class="fa fa-link"></i> </button>
+    <button onclick="execCmd('unlink');" type="button" name="button"><i class="fa fa-unlink"></i> </button>
+    <button onclick="toggleSource();" type="button" name="button"><i class="fa fa-code"></i> </button>
+    <button onclick="toggleEdit();" type="button" name="button">Toggle EDIT</button>
+    <br>
+    <select onchange="execCommandWithArg('fontName', this.value);">
+      <option value="Arial">Arial</option>
+      <option value="Comic Sans MS">Comic Sans MS</option>
+      <option value="Courier">Courier</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Tahoma">Tahoma</option>
+      <option value="Times New Roman">Times New Roman</option>
+    </select>
+    <select onchange="execCommandWithArg('fontSize', this.value);">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+    Fore Color: <input type="color" onchange="execCommandWithArg('foreColor', this.value);">
+    Background: <input type="color" onchange="execCommandWithArg('hiliteColor', this.value);">
+    <button onclick="execCommandWithArg('insertImage', prompt('Enter Image Url'), '');"><i class="fa fa-image"></i> </button>
+    <button onclick="execCmd('selectAll');">Select All</button>
+  </div>
+  <iframe id="myframe1" name="richTextField" src="" width="1000px" height="500px"></iframe>
+
+
+
+
+
+  <script>
+    //setting the body inside the iframe direction to rtl
+    const iframe = document.getElementById('myframe1');
+    iframe.contentWindow.document.body.style.direction = "rtl";
+
+    var showingSourceCode = false;
+    var isInEditMode = true;
+
+    function enableEditMode() {
+      richTextField.document.designMode = 'On';
+    }
+
+    function execCmd(command) {
+      richTextField.document.execCommand(command, false, null)
+    }
+
+    function execCommandWithArg(command, arg){
+      richTextField.document.execCommand(command, false, arg)
+    }
+
+    function toggleSource() {
+      if(showingSourceCode){
+        richTextField.document.getElementsByTagName('body')[0].innerHTML = richTextField.document.getElementsByTagName('body')[0].textContent;
+        showingSourceCode = false;
+      }else{
+        richTextField.document.getElementsByTagName('body')[0].textContent = richTextField.document.getElementsByTagName('body')[0].innerHTML;
+        showingSourceCode = true;
       }
-      h1{
-        color: white;
-        text-align: center;
+    }
+
+    function toggleEdit(){
+      if(isInEditMode){
+        richTextField.document.designMode = 'Off';
+        isInEditMode = false;
+      }else{
+        richTextField.document.designMode = 'On';
+        isInEditMode = true;
       }
-    </style>
-  </head>
-  <body>
-    <h1>Welcome Home :)</h1>
-  </body>
+    }
+
+  </script>
+</body>
+
 </html>

@@ -1,0 +1,9 @@
+body{
+  direction: rtl;
+}
+h1{
+  text-align: center;
+}
+iframe *{
+  direction: rtl;
+}
