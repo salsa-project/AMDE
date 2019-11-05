@@ -8,10 +8,12 @@
   <script src="https://kit.fontawesome.com/7b41f2f688.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="enableEditMode();">
+<body>
   <h1>مرحبا بك :)</h1>
 
-  <div class="">
+  <div class="text-options">
+
+    <div class="part">
     <button onclick="execCmd('bold');"><i class="fa fa-bold"></i> </button>
     <button onclick="execCmd('italic');"><i class="fa fa-italic"></i> </button>
     <button onclick="execCmd('underline');"><i class="fa fa-underline"></i> </button>
@@ -24,6 +26,9 @@
     <button onclick="execCmd('copy');"><i class="fa fa-copy"></i> </button>
     <button onclick="execCmd('outdent');"><i class="fa fa-dedent"></i> </button>
     <button onclick="execCmd('indent');"><i class="fa fa-indent"></i> </button>
+  </div>
+    <div class="part">
+
     <button onclick="execCmd('subscript');"><i class="fa fa-subscript"></i> </button>
     <button onclick="execCmd('superscript');"><i class="fa fa-superscript"></i> </button>
     <button onclick="execCmd('undo');"><i class="fa fa-undo"></i> </button>
@@ -31,29 +36,33 @@
     <button onclick="execCmd('insertUnorderedList');"><i class="fa fa-list-ul"></i> </button>
     <button onclick="execCmd('insertorderedlist');"><i class="fa fa-list-ol"></i> </button>
     <button onclick="execCmd('insertParagraph');"><i class="fa fa-paragraph"></i> </button>
-
-    <select onchange="execCommandWithArg('formatBlock', this.value);">
-      <option value="H1">H1</option>
-      <option value="H2">H2</option>
-      <option value="H3">H3</option>
-      <option value="H4">H4</option>
-      <option value="H5">H5</option>
-      <option value="H6">H6</option>
-    </select>
-    <button onclick="execCmd('insertHorizontalRule');">HR</button>
     <button onclick="execCommandWithArg('createLink', prompt('enter a url', 'http://'));" type="button" name="button"><i class="fa fa-link"></i> </button>
     <button onclick="execCmd('unlink');" type="button" name="button"><i class="fa fa-unlink"></i> </button>
-    <button onclick="toggleSource();" type="button" name="button"><i class="fa fa-code"></i> </button>
-    <button onclick="toggleEdit();" type="button" name="button">Toggle EDIT</button>
-    <br>
-    <select onchange="execCommandWithArg('fontName', this.value);">
+
+
+    </div>
+
+    <div class="part">
+
+    <select onchange="execCommandWithArg('formatBlock', this.value);">
+      <option value="H1" style="font-size: 28pt; font-weight: 600;">H1</option>
+      <option value="H2" style="font-size: 24pt; font-weight: 600;">H2</option>
+      <option value="H3" style="font-size: 20pt; font-weight: 600;">H3</option>
+      <option value="H4" style="font-size: 16pt; font-weight: 600;">H4</option>
+      <option value="H5" style="font-size: 12pt; font-weight: 600;">H5</option>
+      <option value="H6" style="font-size: 8pt; font-weight: 600;">H6</option>
+    </select>
+    <button onclick="execCmd('insertHorizontalRule');">HR</button>
+    <!-- <button onclick="toggleSource();" type="button" name="button"><i class="fa fa-code"></i> </button> -->
+
+    <!-- <select onchange="execCommandWithArg('fontName', this.value);">
       <option value="Arial">Arial</option>
       <option value="Comic Sans MS">Comic Sans MS</option>
       <option value="Courier">Courier</option>
       <option value="Georgia">Georgia</option>
       <option value="Tahoma">Tahoma</option>
       <option value="Times New Roman">Times New Roman</option>
-    </select>
+    </select> -->
     <select onchange="execCommandWithArg('fontSize', this.value);">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -62,18 +71,26 @@
       <option value="5">5</option>
       <option value="6">6</option>
     </select>
-    Fore Color: <input type="color" onchange="execCommandWithArg('foreColor', this.value);">
-    Background: <input type="color" onchange="execCommandWithArg('hiliteColor', this.value);">
+    اللون <input class="colorPicker" type="color" onchange="execCommandWithArg('foreColor', this.value);">
+    الخلفية <input class="colorPicker" type="color" onchange="execCommandWithArg('hiliteColor', this.value);">
     <button onclick="execCommandWithArg('insertImage', prompt('Enter Image Url'), '');"><i class="fa fa-image"></i> </button>
     <button onclick="execCmd('selectAll');">Select All</button>
+    </div>
   </div>
-  <iframe id="myframe1" name="richTextField" src="" width="1000px" height="500px"></iframe>
+  <div class="part iframe-container">
+    <button id="edit-view" onclick="toggleEdit();" type="button" name="button">معاينة | تعديل</button>
+    <iframe id="myframe1" name="richTextField" src=""></iframe>
+
+  </div>
 
 
 
 
 
   <script>
+
+    enableEditMode();
+
     //setting the body inside the iframe direction to rtl
     const iframe = document.getElementById('myframe1');
     iframe.contentWindow.document.body.style.direction = "rtl";
@@ -111,6 +128,22 @@
         richTextField.document.designMode = 'On';
         isInEditMode = true;
       }
+    }
+
+    //link css file to the iframe
+    window.onload = function() {
+      let link = document.createElement("link");
+      link.href = "/resources/css/style-iframe.css";
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      iframe.contentWindow.document.head.appendChild(link);
+    }
+
+    const btns = document.getElementsByTagName('button');
+    for(var i = 0; i < btns.length; i++){
+        this.addEventListener('click', function(){
+          iframe.contentWindow.document.body.focus();
+        })
     }
 
   </script>

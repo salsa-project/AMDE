@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Tajawal&display=swap');
+*{
+  font-family: 'Tajawal', sans-serif;
+}
+body{
+  direction: rtl;
+  padding-top: 30px;
+  background: white;
+}
+h1{
+  text-align: center;
+}
+iframe *{
+  direction: rtl;
+}
