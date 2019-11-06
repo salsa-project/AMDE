@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Tajawal&display=swap');
 *{
+  padding: 0px;
+  margin: 0px;
   font-family: 'Tajawal', sans-serif;
+  box-sizing: border-box;
 }
 body{
   direction: rtl;
@@ -51,13 +54,56 @@ select{
 }
 #edit-view{
   position: absolute;
-  top: 10px;
-  right: 15%;
+  top: 0px;
+  right: 3%;
   z-index: 5;
 }
 #myframe1{
   min-height: 400px;
-  width: 70vw;
-  margin: 10px;
-  transform: translateX(-20%);
+  width: 90vw;
+  transform: translateX(-3%);
+}
+.new-post-part-one-container{
+  display: flex;
+  flex-direction: column;
+}
+.new-post-title-container{
+  padding: 10px;
+}
+.new-post-title-container, .new-post-image-container, .show-uploaded-image{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.new-post-image-container{
+  margin: 0px 0px 15px 0px;
+}
+.new-post-details{
+  margin: 0px;
+  text-align: center;
+}
+.new-post-input, .new-post-image-submit{
+  width: 50%;
+  padding: 8px 10px;
+  margin: 10px auto;
+  color: black;
+  background: white;
+  border: 1px rgb(225, 225, 225) solid;
+}
+.new-post-image-submit{
+  width: 50%;
+  margin: 0 auto;
+  color: white;
+  background: black;
+  border-color: black;
+}
+#upload-err{
+  color: red;
+  text-align: center;
+}
+.new-post-image-show{
+  height: auto;
+  width: 70px;
+  margin: 0px auto;
 }
