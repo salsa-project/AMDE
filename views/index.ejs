@@ -16,9 +16,9 @@
     </div>
     <form class="new-post new-post-image-container" action="/upload" method="post" enctype="multipart/form-data">
       <p class="new-post new-post-details">صورة الموضوع :</p>
-      <input class="new-post new-post-input new-post-image" type="file" accept="image/*" name="photo" >
+      <input id="new-pic" class="new-post new-post-input new-post-image" type="file" accept="image/*" name="photo" >
       <p id="upload-err"><%= (typeof msg != 'undefined') ? msg : '' %></p>
-      <input class="new-post new-post-image-submit" type="submit" value="upload">
+      <input id="upload" class="new-post new-post-image-submit" type="button" value="upload">
     </form>
   </div>
   <div class="show-uploaded-image">
@@ -95,7 +95,7 @@
   </div>
 
 
-
+  <script src="/resources/js/ajax.js"></script>
   <script>
     enableEditMode();
 
