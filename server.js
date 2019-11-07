@@ -4,7 +4,7 @@ const multer = require('multer');
 
 const keys = require('./configs/keys');
 
-const storage = multer.diskStorage({destination: __dirname + '/uploads/images',
+const storage = multer.diskStorage({destination: __dirname + '/views/resources/images',
 filename: function(req, file, cb){
   cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
 }});
@@ -56,8 +56,7 @@ app.post('/upload', (req, res) => {
       if(req.file == undefined){
         res.render('index', {msg: 'Error: No File Selected!'})
       }else{
-        //[TOFIX] display the image after uploading it
-        // res.render('index', {msg: 'Error: File Uploaded!', file: `uploads/images/${req.file.filename}`})
+        res.render('index', {msg: 'Error: File Uploaded!', file: `/resources/images/${req.file.filename}`})
       }
     }
   })
