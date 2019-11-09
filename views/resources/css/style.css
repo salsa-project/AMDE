@@ -9,20 +9,46 @@ body{
   direction: rtl;
 }
 h1{
+  margin: 10px 0px;
+  color: lightgray;
   text-align: center;
+}
+.new-post-part-one-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.new-post-details{
+  text-align: center;
+}
+.new-post-input, .new-post-submit{
+  width: 50%;
+  padding: 8px 10px;
+  margin: 8px 0px;
+  color: black;
+  background: white;
+  border: 1px rgb(225, 225, 225) solid;
+}
+.new-post-submit{
+  color: white;
+  background: black;
+  border-color: black;
+}
+#upload-err{
+  color: red;
+  text-align: center;
+}
+
+
+.text-options{
+  display: flex;
+  flex-direction: column;
 }
 .part{
   margin: 5px auto;
 }
-.text-options{
-  display: flex;
-  flex-direction: column-reverse;
-}
-iframe{
-  direction: rtl;
-  border: 1px rgb(210, 210, 210) solid;
-  box-shadow: inset 0 0 3px lightgray;
-}
+
 button, select{
   padding: 8px 13px 5px;
   background: white;
@@ -36,73 +62,30 @@ button:active{
   background: black;
   color: white;
 }
-select{
-  background: rgb(245, 245, 245);
-}
 .colorPicker{
-  height: 20px;
+  height: 25px;
   width: 30px;
-  padding: 0px 0px;
   background: white;
   border-radius: 3px;
   border: 1px rgb(225, 225, 225) solid;
 }
 .iframe-container{
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  /* background: rgb(250, 250, 250); */
 }
 #edit-view{
   position: absolute;
   top: 0px;
-  right: 3%;
+  width: 20%;
   z-index: 5;
 }
-#myframe1{
+iframe{
   min-height: 400px;
-  width: 90vw;
+  width: 70vw;
+  border: 1px rgb(210, 210, 210) solid;
+  box-shadow: inset 0 0 3px lightgray;
   transform: translateX(-3%);
-}
-.new-post-part-one-container{
-  display: flex;
-  flex-direction: column;
-}
-.new-post-title-container{
-  padding: 10px;
-}
-.new-post-title-container, .new-post-image-container, .show-uploaded-image{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-}
-.new-post-image-container{
-  margin: 0px 0px 15px 0px;
-}
-.new-post-details{
-  margin: 0px;
-  text-align: center;
-}
-.new-post-input, .new-post-image-submit{
-  width: 50%;
-  padding: 8px 10px;
-  margin: 10px auto;
-  color: black;
-  background: white;
-  border: 1px rgb(225, 225, 225) solid;
-}
-.new-post-image-submit{
-  width: 50%;
-  margin: 0 auto;
-  color: white;
-  background: black;
-  border-color: black;
-}
-#upload-err{
-  color: red;
-  text-align: center;
-}
-.new-post-image-show{
-  width: 70px;
-  margin: 0px auto;
 }

@@ -15,7 +15,7 @@ function ajax({method: method, route: route, type: type, data: data, success: su
 const uploadBtn = document.getElementById('upload');
 //post title
 const newPostTitle = document.getElementsByClassName('new-post-title')[0];
-//display the uploaded picture [TEST PURPOSE ONLY]
+// [TEST PURPOSE] display the uploaded picture
 const showImage = document.getElementsByClassName('new-post-image-show')[0];
 
 uploadBtn.addEventListener('click', function(){
@@ -41,7 +41,7 @@ function postItem(formData){
     data: formData,
     success: function(xhr){
       console.log(xhr.responseText);
-      // load picture in the document
+      // [TEST PURPOSE] load picture in the document
       showImage.setAttribute('src', JSON.parse(xhr.responseText).file)
     },
     forbidden: function(){
